@@ -1,0 +1,444 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-card-border: hsl(var(--card-border));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-popover-border: hsl(var(--popover-border));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-primary-border: var(--primary-border);
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-secondary-border: var(--secondary-border);
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-muted-border: var(--muted-border);
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-accent-border: var(--accent-border);
+
+  /* Gold accent — Saudi luxury signal */
+  --color-gold: hsl(var(--gold));
+  --color-gold-foreground: hsl(var(--gold-foreground));
+  --color-gold-muted: hsl(var(--gold-muted));
+  --color-gold-border: var(--gold-border);
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-destructive-border: var(--destructive-border);
+
+  --color-sidebar: hsl(var(--sidebar));
+  --color-sidebar-foreground: hsl(var(--sidebar-foreground));
+  --color-sidebar-border: hsl(var(--sidebar-border));
+  --color-sidebar-primary: hsl(var(--sidebar-primary));
+  --color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
+  --color-sidebar-primary-border: var(--sidebar-primary-border);
+  --color-sidebar-accent: hsl(var(--sidebar-accent));
+  --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
+  --color-sidebar-accent-border: var(--sidebar-accent-border);
+  --color-sidebar-ring: hsl(var(--sidebar-ring));
+
+  --font-sans: var(--app-font-sans);
+  --font-serif: var(--app-font-serif);
+  --font-mono: var(--app-font-mono);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --button-outline: rgba(0,0,0, .08);
+  --badge-outline: rgba(0,0,0, .05);
+
+  --opaque-button-border-intensity: -8;
+
+  --elevate-1: rgba(0,0,0, .025);
+  --elevate-2: rgba(0,0,0, .06);
+
+  /* Background: Warm Pearl White #F9F7F4 */
+  --background: 340 20% 98%;
+  /* Foreground: Rich Dark Navy */
+  --foreground: 340 30% 12%;
+
+  --border: 283 12% 90%;
+  --input: 283 10% 86%;
+  --ring: var(--primary);
+
+  /* Card: Pure white */
+  --card: 340 10% 99%;
+  --card-foreground: 340 30% 12%;
+  --card-border: 220 13% 90%;
+
+  /* Sidebar: Pure white */
+  --sidebar: 0 0% 100%;
+  --sidebar-foreground: 220 30% 12%;
+  --sidebar-border: 220 13% 90%;
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: hsl(var(--primary) / 0.08);
+  --sidebar-accent-foreground: var(--primary);
+  --sidebar-ring: var(--primary);
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 220 30% 12%;
+  --popover-border: 220 13% 90%;
+
+  /* Default Primary: Royal Lavender #2D1837 */
+  --primary: 283 39% 15%;
+  --primary-foreground: 0 0% 100%;
+  --header-gradient-from: #2D1837;
+  --header-gradient-to: #160B1C;
+
+  /* Secondary: Gold */
+  --secondary: 40 80% 50%;
+  --secondary-foreground: 0 0% 100%;
+
+  /* Gold: Saudi Luxury Gold #F5A623 */
+  --gold: 38 90% 50%;
+  --gold-foreground: 220 30% 12%;
+  --gold-muted: 38 80% 96%;
+
+  --muted: 220 15% 94%;
+  --muted-foreground: 220 10% 46%;
+
+  /* Accent */
+  --accent: 283 30% 96%;
+  --accent-foreground: var(--primary);
+
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+
+  --app-font-sans: 'Cairo', sans-serif;
+  --app-font-serif: Georgia, serif;
+  --app-font-mono: Menlo, monospace;
+  --radius: 0.75rem;
+
+  --sidebar-primary-border: hsl(from hsl(var(--sidebar-primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --sidebar-accent-border: hsl(from hsl(var(--sidebar-accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --primary-border: hsl(from hsl(var(--primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --secondary-border: hsl(from hsl(var(--secondary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --muted-border: hsl(from hsl(var(--muted)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --accent-border: hsl(from hsl(var(--accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --destructive-border: hsl(from hsl(var(--destructive)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --gold-border: hsl(from hsl(var(--gold)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+}
+
+.dark {
+  --background: 220 30% 8%;
+  --foreground: 42 20% 95%;
+
+  --border: 220 20% 18%;
+  --input: 220 20% 18%;
+  --ring: var(--primary);
+
+  --card: 220 25% 12%;
+  --card-foreground: 42 20% 95%;
+  --card-border: 220 20% 18%;
+
+  --sidebar: 220 25% 10%;
+  --sidebar-foreground: 42 20% 95%;
+  --sidebar-border: 220 20% 18%;
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: hsl(var(--primary) / 0.15);
+  --sidebar-accent-foreground: var(--primary);
+  --sidebar-ring: var(--primary);
+
+  --popover: 220 25% 12%;
+  --popover-foreground: 42 20% 95%;
+  --popover-border: 220 20% 18%;
+
+  --primary: 283 45% 65%;
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 197 68% 35%;
+  --secondary-foreground: 0 0% 100%;
+
+  --gold: 38 90% 55%;
+  --gold-foreground: 220 30% 8%;
+  --gold-muted: 38 40% 18%;
+
+  --muted: 220 20% 18%;
+  --muted-foreground: 220 10% 60%;
+
+  --accent: 283 25% 18%;
+  --accent-foreground: 42 20% 95%;
+
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+}
+
+/* Elevation / shadow system — soft, plum-tinted, restrained */
+.shadow-card    { box-shadow: 0 1px 2px 0 rgb(45 24 55/0.05); }
+.shadow-card-md { box-shadow: 0 1px 2px 0 rgb(45 24 55/0.04), 0 8px 24px -8px rgb(45 24 55/0.14); }
+.shadow-card-lg { box-shadow: 0 2px 4px 0 rgb(45 24 55/0.04), 0 24px 48px -16px rgb(45 24 55/0.22); }
+
+/* Page container used by the site frame */
+.container-page { width: 100%; max-width: 80rem; margin-inline: auto; padding-inline: 1rem; }
+@media (min-width: 768px) { .container-page { padding-inline: 2rem; } }
+
+/* Brand gradient surface */
+.bg-brand { background: linear-gradient(135deg, var(--header-gradient-from), var(--header-gradient-to)); }
+
+/* Fine dot grid for brand surfaces (very low contrast) */
+.pattern-lattice {
+  background-image: radial-gradient(rgba(255,255,255,0.07) 1px, transparent 1px);
+  background-size: 22px 22px;
+  mask-image: linear-gradient(to bottom, black, transparent 90%);
+}
+
+/* Eyebrow label above section headings */
+.eyebrow { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: hsl(var(--gold)); }
+
+/* Gold ring glow */
+.shadow-gold { box-shadow: 0 0 0 2px hsl(var(--gold)/0.5), 0 4px 12px 0 hsl(var(--gold)/0.25); }
+
+/* ── 4 Theme Definitions ── */
+
+/* 1. Royal Lavender (Default) */
+.theme-lavender {
+  --primary: 283 39% 15%;
+  --header-gradient-from: #2D1837;
+  --header-gradient-to: #160B1C;
+  --accent: 283 30% 96%;
+}
+.dark.theme-lavender,
+.dark .theme-lavender {
+  --primary: 283 45% 65%;
+  --header-gradient-from: #220F2B;
+  --header-gradient-to: #100615;
+  --accent: 283 25% 18%;
+}
+
+/* 2. Emerald Oasis */
+.theme-original {
+  --primary: 152 72% 21%;
+  --header-gradient-from: #0E5B38;
+  --header-gradient-to: #072C1B;
+  --accent: 152 40% 96%;
+}
+.dark.theme-original,
+.dark .theme-original {
+  --primary: 152 60% 45%;
+  --header-gradient-from: #093E26;
+  --header-gradient-to: #041B10;
+  --accent: 152 25% 18%;
+}
+
+/* 3. Blush Rose */
+.theme-rose {
+  --primary: 342 36% 36%;
+  --header-gradient-from: #7C3B4E;
+  --header-gradient-to: #401923;
+  --accent: 342 40% 96%;
+}
+.dark.theme-rose,
+.dark .theme-rose {
+  --primary: 342 45% 65%;
+  --header-gradient-from: #542432;
+  --header-gradient-to: #2B0F18;
+  --accent: 342 25% 18%;
+}
+
+/* 4. Terracotta Clay */
+.theme-terracotta {
+  --primary: 10 40% 48%;
+  --header-gradient-from: #AD5B4B;
+  --header-gradient-to: #59251C;
+  --accent: 10 40% 96%;
+}
+.dark.theme-terracotta,
+.dark .theme-terracotta {
+  --primary: 10 50% 65%;
+  --header-gradient-from: #6E3328;
+  --header-gradient-to: #39160F;
+  --accent: 10 25% 18%;
+}
+
+/* Islamic Geometric Pattern overlays */
+.pattern-bg {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+.pattern-bg-lg {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1.5px, transparent 1.5px),
+    radial-gradient(rgba(245, 166, 35, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px, 16px 16px;
+  background-position: 0 0, 16px 16px;
+}
+
+/* RTL Text Alignment & Direction Rules for Form Inputs, Textareas, Selects, and Labels */
+[dir="rtl"] input:not([type="date"]):not([type="time"]):not([type="datetime-local"]),
+[dir="rtl"] textarea,
+[dir="rtl"] select,
+[dir="rtl"] [role="combobox"],
+[dir="rtl"] [data-radix-select-trigger],
+[dir="rtl"] [data-slot="input-group-control"],
+html[dir="rtl"] input:not([type="date"]):not([type="time"]):not([type="datetime-local"]),
+html[dir="rtl"] textarea,
+html[dir="rtl"] select,
+html[dir="rtl"] [role="combobox"],
+html[dir="rtl"] [data-radix-select-trigger] {
+  text-align: right !important;
+  direction: rtl !important;
+}
+
+[dir="rtl"] input::placeholder,
+[dir="rtl"] textarea::placeholder,
+html[dir="rtl"] input::placeholder,
+html[dir="rtl"] textarea::placeholder {
+  text-align: right !important;
+}
+
+[dir="rtl"] label,
+html[dir="rtl"] label {
+  text-align: right;
+}
+
+/* RTL Date & Time Inputs & WebKit value alignment */
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"] {
+  position: relative;
+  min-height: 2.5rem;
+  padding-inline-start: 2.25rem !important;
+  padding-inline-end: 0.75rem !important;
+  font-family: inherit;
+}
+
+[dir="rtl"] input[type="date"],
+[dir="rtl"] input[type="time"],
+[dir="rtl"] input[type="datetime-local"],
+html[dir="rtl"] input[type="date"],
+html[dir="rtl"] input[type="time"],
+html[dir="rtl"] input[type="datetime-local"] {
+  text-align: right !important;
+  direction: ltr !important;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+[dir="rtl"] input[type="date"]::-webkit-date-and-time-value,
+[dir="rtl"] input[type="time"]::-webkit-date-and-time-value,
+[dir="rtl"] input[type="datetime-local"]::-webkit-date-and-time-value,
+html[dir="rtl"] input[type="date"]::-webkit-date-and-time-value,
+html[dir="rtl"] input[type="time"]::-webkit-date-and-time-value,
+html[dir="rtl"] input[type="datetime-local"]::-webkit-date-and-time-value {
+  text-align: right !important;
+  direction: ltr !important;
+  width: 100%;
+}
+
+[dir="rtl"] input[type="date"]::-webkit-calendar-picker-indicator,
+[dir="rtl"] input[type="time"]::-webkit-calendar-picker-indicator,
+[dir="rtl"] input[type="datetime-local"]::-webkit-calendar-picker-indicator,
+html[dir="rtl"] input[type="date"]::-webkit-calendar-picker-indicator,
+html[dir="rtl"] input[type="time"]::-webkit-calendar-picker-indicator,
+html[dir="rtl"] input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+  position: absolute;
+  left: 0.6rem;
+  right: auto;
+  cursor: pointer;
+  opacity: 0.75;
+  padding: 0.2rem;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+[dir="rtl"] input[type="date"]::-webkit-calendar-picker-indicator:hover,
+[dir="rtl"] input[type="time"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+[dir="ltr"] input[type="date"]::-webkit-calendar-picker-indicator,
+[dir="ltr"] input[type="time"]::-webkit-calendar-picker-indicator,
+[dir="ltr"] input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+  position: absolute;
+  right: 0.6rem;
+  left: auto;
+  cursor: pointer;
+  opacity: 0.75;
+  padding: 0.2rem;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+/* ── Responsive Typography Utilities (Breakpoint-based Scaling) ── */
+.text-responsive-xs {
+  font-size: 0.6875rem; /* 11px on mobile */
+}
+@media (min-width: 640px) {
+  .text-responsive-xs {
+    font-size: 0.75rem; /* 12px on tablet & desktop */
+  }
+}
+
+.text-responsive-sm {
+  font-size: 0.75rem; /* 12px on mobile */
+}
+@media (min-width: 640px) {
+  .text-responsive-sm {
+    font-size: 0.875rem; /* 14px on tablet & desktop */
+  }
+}
+
+.text-responsive-base {
+  font-size: 0.875rem; /* 14px on mobile */
+}
+@media (min-width: 640px) {
+  .text-responsive-base {
+    font-size: 1rem; /* 16px on tablet & desktop */
+  }
+}
+
+.text-responsive-lg {
+  font-size: 1rem; /* 16px on mobile */
+}
+@media (min-width: 640px) {
+  .text-responsive-lg {
+    font-size: 1.125rem; /* 18px on tablet & desktop */
+  }
+}
+
+.text-responsive-xl {
+  font-size: 1.125rem; /* 18px on mobile */
+}
+@media (min-width: 640px) {
+  .text-responsive-xl {
+    font-size: 1.35rem; /* 21.6px on tablet & desktop */
+  }
+}
+
+
+
